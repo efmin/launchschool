@@ -10,7 +10,7 @@ Next Lecture:
   - never go by examples
   - take notes for explicit requirements
   - create computational model for implicit requirements
-  - once input/output done, jump forward to writing out examples or test cases
-  2. Test Cases/ Examples
-  - figure out happy path examples
-  - look at: edge cases 
+  - if done completely, you should know EXACTLY how to go from input to output from your notes here. If not, you're either missing something (ask the interview) or you need to make something implicit explicit.
+
+(3) Know the building blocks of your language:
+  - memorize all methods for Strings, Arrays, Hashes, Enumerables, Integers
