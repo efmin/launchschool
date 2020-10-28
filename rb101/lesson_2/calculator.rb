@@ -8,6 +8,9 @@ end
 
 
 prompt("Welcome to Calculator!")
+prompt("Please type in your name:")
+name = gets.chomp
+prompt("Welcome, #{name}!")
 
 loop do
   number1 = nil
