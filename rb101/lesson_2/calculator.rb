@@ -6,10 +6,14 @@ def valid_num?(n)
   n.to_i != 0
 end
 
-
 prompt("Welcome to Calculator!")
-prompt("Please type in your name:")
-name = gets.chomp
+
+name = nil
+loop do
+  prompt("Please type in your name:")
+  name = gets.chomp
+  break unless name.empty?
+end
 prompt("Welcome, #{name}!")
 
 loop do
@@ -40,7 +44,12 @@ loop do
 
   prompt(operator_prompt)
 
-  operator = Kernel.gets().chomp()
+  operator = nil 
+  loop do
+    operator = Kernel.gets().chomp()
+    break if (1..4).include?(operator.to_i)
+    prompt("Incorrect input. Please use 1-4.")
+  end
 
   result = case operator
   when '1'
