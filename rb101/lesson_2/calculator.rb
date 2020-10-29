@@ -27,7 +27,7 @@ loop do
   name = gets.chomp
   break unless name.empty?
 end
-prompt('Welcome, #{name}!')
+prompt("Welcome, #{name}!")
 
 loop do
   number1 = nil
@@ -57,7 +57,7 @@ loop do
 
   prompt operator_prompt
 
-  operator = nil 
+  operator = nil
   loop do
     operator = gets.chomp
     break if (1..4).include? operator.to_i
@@ -65,22 +65,22 @@ loop do
   end
 
   result = case operator
-  when '1'
-    number1.to_i() + number2.to_i()
-  when '2'  
-    number1.to_i() - number2.to_i()
-  when '3'
-    number1.to_i() * number2.to_i()
-  when '4'
-    number1.to_f() / number2.to_f()
-  end
+           when '1'
+             number1.to_i() + number2.to_i()
+           when '2'  
+             number1.to_i() - number2.to_i()
+           when '3'
+             number1.to_i() * number2.to_i()
+           when '4'
+             number1.to_f() / number2.to_f()
+           end
 
   performing_operation = <<-MSG
         #{operation_to_message(operator)}...
          #{operation_to_message(operator)}...
          really working hard here...
         MSG
-  
+
   prompt(performing_operation)
   prompt("The result is #{result}.")
   prompt("Would you like to perform another calculation? (Y to calculate again)")
