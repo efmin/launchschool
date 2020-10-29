@@ -1,12 +1,12 @@
-def prompt(message)
-  Kernel.puts ">> #{message}"
+def prompt message
+  puts ">> #{message}"
 end
 
-def valid_num?(n)
+def valid_num? n
   n.to_i != 0
 end
 
-def operation_to_message(op)
+def operation_to_message op
   case op
   when '1'
     'adding'
@@ -19,15 +19,15 @@ def operation_to_message(op)
   end
 end
 
-prompt("Welcome to Calculator!")
+prompt('Welcome to Calculator!')
 
 name = nil
 loop do
-  prompt("Please type in your name:")
+  prompt('Please type in your name:')
   name = gets.chomp
   break unless name.empty?
 end
-prompt("Welcome, #{name}!")
+prompt('Welcome, #{name}!')
 
 loop do
   number1 = nil
@@ -35,16 +35,16 @@ loop do
 
   loop do
     prompt("What's the first number?")
-    number1 = Kernel.gets().chomp()
-    break if valid_num?(number1)  
-    prompt("Invalid number.")
+    number1 = gets.chomp
+    break if valid_num? number1  
+    prompt 'Invalid number.'
   end
 
   loop do
     prompt("What's the second number?")
-    number2 = Kernel.gets().chomp()
-    break if valid_num?(number2)  
-    prompt("Invalid number.")
+    number2 = gets.chomp
+    break if valid_num? number2  
+    prompt 'Invalid number.'
   end
 
   operator_prompt = <<-MSG
@@ -55,13 +55,13 @@ loop do
   4) divide
   MSG
 
-  prompt(operator_prompt)
+  prompt operator_prompt
 
   operator = nil 
   loop do
-    operator = Kernel.gets().chomp()
-    break if (1..4).include?(operator.to_i)
-    prompt("Incorrect input. Please use 1-4.")
+    operator = gets.chomp
+    break if (1..4).include? operator.to_i
+    prompt 'Incorrect input. Please use 1-4.'
   end
 
   result = case operator
