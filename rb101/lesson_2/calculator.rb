@@ -6,6 +6,19 @@ def valid_num?(n)
   n.to_i != 0
 end
 
+def operation_to_message(op)
+  case op
+  when '1'
+    'adding'
+  when '2'
+    'subtracting'
+  when '3'
+    'multiplying'
+  when '4'
+    'dividing'
+  end
+end
+
 prompt("Welcome to Calculator!")
 
 name = nil
@@ -62,6 +75,13 @@ loop do
     number1.to_f() / number2.to_f()
   end
 
+  performing_operation = <<-MSG
+        #{operation_to_message(operator)}...
+         #{operation_to_message(operator)}...
+         really working hard here...
+        MSG
+  
+  prompt(performing_operation)
   prompt("The result is #{result}.")
   prompt("Would you like to perform another calculation? (Y to calculate again)")
   repeat = gets.chomp.downcase
