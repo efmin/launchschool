@@ -1,3 +1,5 @@
+require 'pry'
+
 def prompt message
   puts ">> #{message}"
 end
@@ -24,6 +26,7 @@ prompt('Welcome to Calculator!')
 name = nil
 loop do
   prompt('Please type in your name:')
+  # binding.pry
   name = gets.chomp
   break unless name.empty?
 end
