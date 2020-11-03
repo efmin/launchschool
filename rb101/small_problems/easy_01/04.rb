@@ -18,7 +18,8 @@ def count_occurrences(vehicles)
   vehicles.uniq.each do |vehicle|
     hash[vehicle] = 0
   end
-  hash.map do |k, v|
+  hash.map do |k, v
+  i
     vehicles.each do |vehicle|
       if k == vehicle
         hash[k] = v += 1
