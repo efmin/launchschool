@@ -5,7 +5,7 @@ def prompt message
 end
 
 def valid_num? n
-  n.to_i.is_a? Integer
+  n.to_i.to_s == n
 end
 
 def operation_to_message op
