@@ -5,7 +5,7 @@ def prompt message
 end
 
 def valid_num? n
-  n.to_i != 0
+  n.to_i.is_a? Integer
 end
 
 def operation_to_message op
@@ -26,7 +26,6 @@ prompt('Welcome to Calculator!')
 name = nil
 loop do
   prompt('Please type in your name:')
-  # binding.pry
   name = gets.chomp
   break unless name.empty?
 end
