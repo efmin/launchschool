@@ -5,17 +5,26 @@ def prompt(message)
 end
 
 def monthly_interest_rate(apr)
-  apr.to_i / 12.0
+  ( apr / 12.0 ) * 0.01
+end
+
+def monthly_payment_formula(loan_amount, monthly_interest_rate, loan_duration_in_months)
+  loan_amount * (monthly_interest_rate / (1 - (1 + monthly_interest_rate)**(-loan_duration_in_months)))
 end
 
 
+
 prompt("Welcome to Morgage Calculator. What is your loan amount?")
-loan_amount = gets.chomp
-# loan_amount is a string of an integer represented by P 
+loan_amount = gets.chomp.to_i
+# binding.pry
 
 prompt("What is your APR? Please answer the integer value of your annual percentage rate.")
-apr = gets.chomp
+apr = gets.chomp.to_i
 
-puts "You have entered #{apr} are your APR. We have calculated your monthly interest rate to be: #{monthly_interest_rate(apr)}"
+prompt("What is your loan duration in months?")
+loan_duration_in_months = gets.chomp.to_i
 
-binding.pry
+monthly_payment = monthly_payment_formula(loan_amount, monthly_interest_rate(apr), loan_duration_in_months) 
+
+prompt("Your monthly payment is: #{monthly_payment.round(2)}")
+
