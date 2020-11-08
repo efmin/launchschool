@@ -1,4 +1,5 @@
 # 10DIME
+#
 # Input: 
 # - loan_amount as integer
 # - APR as a float

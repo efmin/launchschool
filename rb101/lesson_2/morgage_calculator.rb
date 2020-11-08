@@ -8,8 +8,12 @@ def monthly_interest_rate(apr)
   ( apr / 12.0 ) * 0.01
 end
 
-def monthly_payment_formula(loan_amount, monthly_interest_rate, loan_duration_in_months)
-  loan_amount * (monthly_interest_rate / (1 - (1 + monthly_interest_rate)**(-loan_duration_in_months)))
+def monthly_payment_formula(loan_amount, 
+                            monthly_interest_rate, 
+                            loan_duration_in_months)
+  loan_amount * 
+  (monthly_interest_rate / 
+  (1 - (1 + monthly_interest_rate)**(-loan_duration_in_months)))
 end
 
 positive_value_error = 'Invalid input. Please enter a positive value.'
@@ -36,9 +40,16 @@ loop do
 end
 
 prompt("What is your loan duration in months?")
-loan_duration_in_months = gets.chomp.to_i
 
-monthly_payment = monthly_payment_formula(loan_amount, monthly_interest_rate(apr), loan_duration_in_months) 
+loan_duration_in_months = ''
+loop do
+  loan_duration_in_months = gets.chomp.to_f
+  break if loan_duration_in_months > 0
+  prompt(positive_value_error)
+end
 
-prompt("Your monthly payment is: #{monthly_payment.round(2)}")
+monthly_payment = monthly_payment_formula(loan_amount,
+                                          monthly_interest_rate(apr), 
+                                          loan_duration_in_months) 
 
+prompt("Your monthly payment is: $#{monthly_payment.round(2)}")
