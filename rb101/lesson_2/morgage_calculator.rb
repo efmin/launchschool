@@ -13,10 +13,16 @@ def monthly_payment_formula(loan_amount, monthly_interest_rate, loan_duration_in
 end
 
 
+prompt('Welcome to Morgage Calculator.')
 
-prompt("Welcome to Morgage Calculator. What is your loan amount?")
-loan_amount = gets.chomp.to_i
-# binding.pry
+loan_amount = ''
+loop do
+  prompt('What is your loan amount?')
+  loan_amount = gets.chomp.to_f
+  break if loan_amount > 0
+  prompt('Invalid input. Please enter a positive loan amount.')
+end
+
 
 prompt("What is your APR? Please answer the integer value of your annual percentage rate.")
 apr = gets.chomp.to_i
