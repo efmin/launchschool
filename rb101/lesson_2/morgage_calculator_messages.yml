@@ -1,0 +1,2 @@
+welcome: 'Welcome to Morgage Calculator!'
+positive_value_error: 'Invalid input. Please enter a positive value.'
