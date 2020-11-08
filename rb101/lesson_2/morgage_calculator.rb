@@ -15,5 +15,11 @@
 # - APR = yearly interest rate
 #
 # Illustrations:
+# helper methods:
+# 1. convert APR (annual interest) to monthly interest
+# 2. check if loan duration is yearly, if so, convert to monthly
+#
+# I want to write a method whose output is my monthly payment (3.) and call these two helper methods inside that method so that I can convert the input values into the right ratios for the equation provided
+#
 # Methods:
 # Examples:
