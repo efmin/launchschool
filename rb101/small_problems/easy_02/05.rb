@@ -10,4 +10,3 @@ puts 'What is your name?'
 name = gets.chomp
 
 puts name.include?("!") ? yell_greeting(name) : greeting(name)
-
