@@ -22,26 +22,22 @@ def word_to_digit(sentence)
   }
   words = sentence.split(' ')
   words.each do |word|
-    numbers_table.each do |k, v|
-      if word == k
-        result << v
-        p result
-      else
-        result << word
-        p result
-      end
+    if numbers_table.has_key?(word)
+      result << numbers_table[word]
+    else
+      result << word
     end
   end
-  p result.size
+  p result.join(" ")
 end
 
 word_to_digit('one two three test!')
 
 
 
-# word_to_digit('Please call me at five five five one two three four. Thanks.') == 'Please call me at 5 5 5 1 2 3 4. Thanks.'
-# word_to_digit('Here are some more numbers: one two one ten') == 'Here are some more numbers: 1 2 1 ten'
-# word_to_digits('onetwooneten') == '121ten'
-# word_to_digits('one  two  one  ten') == '1  2  1  ten'
+word_to_digit('Please call me at five five five one two three four. Thanks.') == 'Please call me at 5 5 5 1 2 3 4. Thanks.'
+word_to_digit('Here are some more numbers: one two one ten') == 'Here are some more numbers: 1 2 1 ten'
+word_to_digit('onetwooneten') == '121ten'
+word_to_digit('one  two  one  ten') == '1  2  1  ten'
 
 
