@@ -7,31 +7,39 @@
 # Mental Model: I want to save user input into a variable and split it into letters. Then I will to count all letters. I would like to try to write this as manually as possible.
 # Edge Cases: 
 # - empty input?
+# - 1 letter
 
 # Pseudo-Code:
-# - prompt user, save string input
 # - split string into characters
-# - iterate through array of characters and see if there are any matches to a white space as: " "
-# - subtract white space count from count of letters and output the result in a string 
+# - count the characters
+# - check if there are any white spaces, if not, return result in a string output
+# if there are white spaces: count the white spaces by using (" ") as args to the array#count method. Subtract this count from the total character count. Return result in String output.
 
-def count_chars(string)
-
+def print_count(string)
+  chars = string.split('')
+  count = nil
+  if chars.include?(' ')
+    count = chars.count - chars.count(' ')
+    puts "There are #{count} characters in \"#{string}\"."
+  elsif chars.count == 1
+    puts "There is 1 character in \"#{string}\"."
+  else 
+    count = chars.count
+    puts "There are #{count} characters in \"#{string}\"."
+  end 
 end
 
 a = 'walk'
-p count_chars(a)
-p count_chars(a) == 4
+print_count(a)
 
 b = "walk, don't run"
-p count_chars(b)
-p count_chars(b) == 13
+print_count(b)
 
 c = '   '
-p count_chars(c)
-p count_chars(d) == 0
+print_count(c)
 
 d = '*&  +='
-p count_chars(d)
-p count_chars(d) == 4
+print_count(d)
 
-
+e = 'a'
+print_count(e)
