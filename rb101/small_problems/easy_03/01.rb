@@ -15,7 +15,7 @@
 # - use enum#include? method to check if sixth value is a match with array obj
 # - print match result message using ternary operator
 
-def number_prompt(iteration)
+def input_prompt(iteration)
 # it's better to use puts here than p because puts will not return a value,
 # therefore keeping the method's intent singular
   iterations = %w(1st 2nd 3rd 4th 5th last)
@@ -30,13 +30,22 @@ numbers = []
 count = 1
 # set counter to only run loop code 6 times
 while count <= 6 do
-  # call the number_prompt method and pass into params the iteration count
-  number_prompt(count)
+  # call the input_prompt method and pass into params the iteration count
+  input_prompt(count)
   # save user input into numbers array
   numbers << gets.chomp.to_i
   # increment iteration counter
   count += 1
 end
 
-puts "The number #{numbers[5]} appears in #{numbers}."
+# remove last value of array and search array for match: 
+last = numbers.pop
+if numbers.include?(last)
+  puts "The number #{last} appears in #{numbers}."
+else
+  puts "The number #{last} does not appear in #{numbers}."
+end
+exit
+
+
 
