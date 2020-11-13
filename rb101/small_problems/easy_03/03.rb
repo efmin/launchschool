@@ -14,4 +14,24 @@
 # - iterate through array of characters and see if there are any matches to a white space as: " "
 # - subtract white space count from count of letters and output the result in a string 
 
+def count_chars(string)
+
+end
+
+a = 'walk'
+p count_chars(a)
+p count_chars(a) == 4
+
+b = "walk, don't run"
+p count_chars(b)
+p count_chars(b) == 13
+
+c = '   '
+p count_chars(c)
+p count_chars(d) == 0
+
+d = '*&  +='
+p count_chars(d)
+p count_chars(d) == 4
+
 
