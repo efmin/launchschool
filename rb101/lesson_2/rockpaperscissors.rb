@@ -11,10 +11,32 @@ def prompt(msg)
   puts ">> #{msg}"
 end
 
-prompt("Please pick rock, paper, or scissors:")
-user_choice = gets.chomp
-puts user_choice
+loop do 
+  prompt("Please pick rock, paper, or scissors:")
 
-computer_choice = VALID_CHOICES.sample
-puts computer_choice
+  choice = ''
+  loop do
+    choice = gets.chomp
+    break if VALID_CHOICES.include?(choice)
+    prompt('Invalid response. Please choose rock, paper, or scissors.')
+  end 
 
+  computer_choice = VALID_CHOICES.sample
+  prompt("You picked #{choice} and Computer picked #{computer_choice}.")
+
+  if (choice == 'rock' && computer_choice == 'scissors') ||
+      (choice == 'paper' && computer_choice == 'rock') ||
+      (choice == 'scissors' && computer_choice == 'paper') 
+    prompt('You won!')
+  elsif (choice == 'rock' && computer_choice == 'paper') ||
+        (choice == 'paper' && computer_choice == 'scissors') ||
+        (choice == 'scissors' && computer_choice == 'rock')
+    prompt('Computer won!')
+  else
+    prompt("It's tie!")
+  end
+
+  prompt('Would you like to play again?') 
+  answer = gets.chomp
+  break unless answer.downcase.start_with?('y')
+end
