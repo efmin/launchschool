@@ -11,7 +11,13 @@ def prompt(msg)
   puts ">> #{msg}"
 end
 
-def gameplay(choice, computer_choice)
+def display_result(choice, computer_choice)
+
+# name of method reflects the return of the method being a DISPLAY action
+# if we were not printing here but rather returning a value, we might name
+# the method something like "winning_player" and then display that in a
+# separate logic. This method encapsulates one intent. 
+
   if (choice == 'rock' && computer_choice == 'scissors') ||
       (choice == 'paper' && computer_choice == 'rock') ||
       (choice == 'scissors' && computer_choice == 'paper') 
@@ -39,7 +45,7 @@ loop do
   computer_choice = VALID_CHOICES.sample
   prompt("You picked #{choice} and Computer picked #{computer_choice}.")
 
-  gameplay(choice, computer_choice)
+  display_result(choice, computer_choice)
 
   prompt('Would you like to play again?') 
   answer = gets.chomp
