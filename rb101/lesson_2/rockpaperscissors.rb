@@ -11,6 +11,21 @@ def prompt(msg)
   puts ">> #{msg}"
 end
 
+def gameplay(choice, computer_choice)
+  if (choice == 'rock' && computer_choice == 'scissors') ||
+      (choice == 'paper' && computer_choice == 'rock') ||
+      (choice == 'scissors' && computer_choice == 'paper') 
+    prompt('You won!')
+  elsif (choice == 'rock' && computer_choice == 'paper') ||
+        (choice == 'paper' && computer_choice == 'scissors') ||
+        (choice == 'scissors' && computer_choice == 'rock')
+    prompt('Computer won!')
+  else
+    prompt("It's tie!")
+  end
+end
+
+
 loop do 
   prompt("Please pick rock, paper, or scissors:")
 
@@ -24,17 +39,7 @@ loop do
   computer_choice = VALID_CHOICES.sample
   prompt("You picked #{choice} and Computer picked #{computer_choice}.")
 
-  if (choice == 'rock' && computer_choice == 'scissors') ||
-      (choice == 'paper' && computer_choice == 'rock') ||
-      (choice == 'scissors' && computer_choice == 'paper') 
-    prompt('You won!')
-  elsif (choice == 'rock' && computer_choice == 'paper') ||
-        (choice == 'paper' && computer_choice == 'scissors') ||
-        (choice == 'scissors' && computer_choice == 'rock')
-    prompt('Computer won!')
-  else
-    prompt("It's tie!")
-  end
+  gameplay(choice, computer_choice)
 
   prompt('Would you like to play again?') 
   answer = gets.chomp
