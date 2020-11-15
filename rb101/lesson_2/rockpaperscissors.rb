@@ -1,10 +1,10 @@
-VALID_CHOICES = %w(rock paper scissors spock lizard)
+COMPUTER_CHOICES = %w(rock paper scissors spock lizard)
 
 def prompt(msg)
   puts ">> #{msg}"
 end
 
-def which_choice(choice)
+def valid_choice(choice)
   case choice 
   when 'sp' then 'spock'
   when 'sc' then 'scissors'
@@ -44,18 +44,16 @@ loop do
          'l' for lizard,
          'r' for rock, 
          'p' for paper, 
-         or 'sc' for scissor:")
+         'sc' for scissor:")
 
   choice = ''
  
   loop do
     choice = gets.chomp
-    choice = which_choice(choice)
-    break if VALID_CHOICES.include?(choice)
-    prompt('Invalid response.')
+    break if valid_choice(choice)
   end
 
-  computer_choice = VALID_CHOICES.sample
+  computer_choice = COMPUTER_CHOICES.sample
   prompt("You picked #{choice} and Computer picked #{computer_choice}.")
 
   display_result(choice, computer_choice)
