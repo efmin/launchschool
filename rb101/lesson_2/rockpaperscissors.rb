@@ -5,9 +5,16 @@ def prompt(msg)
 end
 
 def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+  (first == 'rock' && 
+    (second == 'scissors' || second == 'lizard' )) ||
+  (first == 'paper' && 
+    (second == 'rock' || second == 'spock')) ||
+  (first == 'scissors' && 
+     (second == 'paper' || second == 'lizard')) ||
+  (first == 'lizard' &&
+    (second == 'spock' || second == 'paper')) ||
+  (first == 'spock' &&
+    (second == 'rock' || second == 'scissors'))
 end
 
 def display_result(choice, computer_choice)
@@ -27,7 +34,7 @@ loop do
   loop do
     choice = gets.chomp
     break if VALID_CHOICES.include?(choice)
-    prompt('Invalid response. Please choose rock, paper, or scissors.')
+    prompt('Invalid response.')
   end
 
   computer_choice = VALID_CHOICES.sample
