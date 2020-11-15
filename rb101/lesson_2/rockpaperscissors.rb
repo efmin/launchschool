@@ -4,6 +4,17 @@ def prompt(msg)
   puts ">> #{msg}"
 end
 
+def which_choice(choice)
+  case choice 
+  when 'sp' then 'spock'
+  when 'sc' then 'scissors'
+  when 'l'  then 'lizard'
+  when 'r'  then 'rock'
+  when 'p'  then 'paper'
+  else puts 'Invalid response.'
+  end
+end
+
 def win?(first, second)
   (first == 'rock' && 
     (second == 'scissors' || second == 'lizard' )) ||
@@ -28,11 +39,18 @@ def display_result(choice, computer_choice)
 end
 
 loop do
-  prompt('Please pick spock, lizard, rock, paper, or scissor:')
+  prompt("Choose: 
+         'sp' for spock, 
+         'l' for lizard,
+         'r' for rock, 
+         'p' for paper, 
+         or 'sc' for scissor:")
 
   choice = ''
+ 
   loop do
     choice = gets.chomp
+    choice = which_choice(choice)
     break if VALID_CHOICES.include?(choice)
     prompt('Invalid response.')
   end
