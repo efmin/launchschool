@@ -1,3 +1,5 @@
+# separate logic from incrementing action in increment method
+
 require 'pry'
 
 VALID_CHOICES = %w(rock paper scissors spock lizard)
@@ -52,33 +54,48 @@ def display_score(user_score, computer_score)
   puts "User: #{user_score} vs Computer: #{computer_score}"
 end
 
+
 prompt('Welcome to Rock-Paper-Spock-Lizard-Scissors!')
+game_play = true
 
 user_score = 0
 computer_score = 0
 display_score(user_score, computer_score)
 
 loop do
-  prompt("Choose: 
-         'sp' for spock, 
-         'l' for lizard,
-         'r' for rock, 
-         'p' for paper, 
-         'sc' for scissor:")
+  while game_play do 
+    prompt("Choose: 
+           'sp' for spock, 
+           'l' for lizard,
+           'r' for rock, 
+           'p' for paper, 
+           'sc' for scissor:")
 
-  choice = ''
- 
-  loop do
-    choice = gets.chomp
-    choice = valid_choice(choice)
-    break if choice
-  end
+    choice = ''
+   
+    loop do
+      choice = gets.chomp
+      choice = valid_choice(choice)
+      break if choice
+    end
 
-  computer_choice = VALID_CHOICES.sample
-  prompt("You picked #{choice} and Computer picked #{computer_choice}.")
-  display_result(choice, computer_choice)
-  increment_score(choice, computer_choice, user_score, computer_score)
+    computer_choice = VALID_CHOICES.sample
+    prompt("You picked #{choice} and Computer picked #{computer_choice}.")
+    display_result(choice, computer_choice)  
+    # increment_score(choice, computer_choice, user_score, computer_score)
+    
+    
+  if win?(choice, computer_choice)
+    user_score += 1
+  elsif win?(computer_choice, choice)
+    computer_score += 1
+  end  
+    
   display_score(user_score, computer_score)
+    if user_score == 5 || computer_score == 5
+      game_play = false 
+    end
+  end
 
   prompt('Would you like to play again?')
   answer = gets.chomp
