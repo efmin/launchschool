@@ -19,20 +19,23 @@ def bubble_sort!(array)
   last_object_of_run = array.size - 1
   sorted = false
   
-  index = 0
-  until index == last_object_of_run 
+  # set condition for loop to stop once sorted
+  until sorted == true 
+    # set sorted boolean to true because then it will
+    # stay true if the if statement does not run
+    sorted = true 
+  array.map do |n|
     if array[index] > array[index+1]
-      p "My array is: #{array}"
+    # set sorted == false since the if statement is running
+      sorted = false
       first = array[index]
-      p "first is #{first}"
       second = array[index+1]
-      p "second is #{second}"
       array[index] = second 
-      p array[index] == second
       array[index+1] = first 
-      p array[index+1] == first
-      index += 1
+      index +=1
     end
+
+  end
   end
   array
 

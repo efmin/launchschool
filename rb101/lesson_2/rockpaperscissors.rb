@@ -1,4 +1,4 @@
-VALID_CHOICES = %w(rock paper scissors)
+VALID_CHOICES = %w(rock paper scissors spock lizard)
 
 def prompt(msg)
   puts ">> #{msg}"
@@ -21,7 +21,7 @@ def display_result(choice, computer_choice)
 end
 
 loop do
-  prompt("Please pick rock, paper, or scissors:")
+  prompt('Please pick spock, lizard, rock, paper, or scissor:')
 
   choice = ''
   loop do
