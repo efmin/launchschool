@@ -47,34 +47,41 @@ def win_state?
   SCORES.values.include?(5)
 end
 
-
+def display_winner
+  user_win = "Congrats! You beat Computer #{SCORES['user_score']} to #{SCORES['computer_score']}."
+  computer_win = "Too bad! Computer beats you #{SCORES['computer_score']} to #{SCORES['user_score']}."
+  
+  if SCORES['user_score'] == 5 
+    prompt(user_win)
+  elsif SCORES['computer_score'] == 5 
+    prompt(computer_win)
+  end
+end
 
 prompt('Welcome!')
 
-# until 'user_score' == 5 || 'computer_score' == 5 
+loop do
+  prompt('Please pick rock, paper, scissors, spock, or lizard:')
+
+  choice = ''
   loop do
-    prompt('Please pick rock, paper, scissors, spock, or lizard:')
+    choice = gets.chomp
+    break if VALID_CHOICES.include?(choice)
+    prompt('Invalid response.')
+  end 
 
-    choice = ''
-    loop do
-      choice = gets.chomp
-      break if VALID_CHOICES.include?(choice)
-      prompt('Invalid response.')
-    end 
+  computer_choice = VALID_CHOICES.sample
+  prompt("You picked #{choice} and Computer picked #{computer_choice}.")
 
-    computer_choice = VALID_CHOICES.sample
-    prompt("You picked #{choice} and Computer picked #{computer_choice}.")
-
-    display_result(choice, computer_choice)
-   
-    increment_score(choice, computer_choice) 
-    puts "The score is now: \nUser - #{SCORES['user_score']} \nComputer - #{SCORES['computer_score']}!"
-    
-    break if win_state?
+  display_result(choice, computer_choice)
+ 
+  increment_score(choice, computer_choice) 
+  puts "The score is now: \nUser - #{SCORES['user_score']} \nComputer - #{SCORES['computer_score']}!"
+  
+  if win_state? 
+    display_winner  
+    break
   end
+end
 
-  puts "Good bye"
-    # prompt('Would you like to play again?')
-    # answer = gets.chomp
-    # break unless answer.downcase.start_with?('y')
-  # end
+prompt('Goodbye!')
