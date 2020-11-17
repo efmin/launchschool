@@ -44,25 +44,26 @@ def display_result(choice, computer_choice)
   end
 end
 
-# def increment_score(choice, computer_choice, user_score, computer_score)
-#   if win?(choice, computer_choice)
-#     user_score += 1
-#   elsif win?(computer_choice, choice)
-#     computer_score += 1
-#   end
-# end
+def increment_score(choice, computer_choice, user_score, computer_score)
+  if win?(choice, computer_choice)
+    user_score += 1
+  elsif win?(computer_choice, choice)
+    computer_score += 1
+  end
+  puts "The Score inside method: User: #{user_score} vs Computer: #{computer_score}"
+end
 
 def display_score(user_score, computer_score)
-  puts "User: #{user_score} vs Computer: #{computer_score}"
+  puts "The Score outside method: User: #{user_score} vs Computer: #{computer_score}"
 end
 
-  if user_score == 5 || computer_score == 5
-   game_play = false 
-  end 
+  # if user_score == 5 || computer_score == 5
+  #  game_play = false 
+  # end 
 
-def display_winner(user_score, computer_score)
-  puts user_score == 5 ? 'You win the match!' : 'Computer wins the match!'
-end
+# def display_winner(user_score, computer_score)
+  # puts user_score == 5 ? 'You win the match!' : 'Computer wins the match!'
+# end
 
 prompt('Welcome to Rock-Paper-Spock-Lizard-Scissors!')
 game_play = true
@@ -91,15 +92,16 @@ loop do
     prompt("You picked #{choice} and Computer picked #{computer_choice}.")
     
     display_result(choice, computer_choice)  
+    increment_score(choice, computer_choice, user_score, computer_score)
     display_score(user_score, computer_score)
      
-    if win?(choice, computer_choice)
-      user_score += 1
-    elsif win?(computer_choice, choice)
-      computer_score += 1
-    end  
+    # if win?(choice, computer_choice)
+    #   user_score += 1
+    # elsif win?(computer_choice, choice)
+    #   computer_score += 1
+    # end  
       
-    finish_game?(user_score, computer_score) 
+    # finish_game?(user_score, computer_score) 
   end
   
   prompt('Would you like to play again?')
