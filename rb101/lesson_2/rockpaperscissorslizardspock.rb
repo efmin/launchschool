@@ -1,3 +1,5 @@
+# TO DO
+# add a display winner method
 # separate logic from incrementing action in increment method
 
 require 'pry'
@@ -42,18 +44,25 @@ def display_result(choice, computer_choice)
   end
 end
 
-def increment_score(choice, computer_choice, user_score, computer_score)
-  if win?(choice, computer_choice)
-    user_score += 1
-  elsif win?(computer_choice, choice)
-    computer_score += 1
-  end
-end
+# def increment_score(choice, computer_choice, user_score, computer_score)
+#   if win?(choice, computer_choice)
+#     user_score += 1
+#   elsif win?(computer_choice, choice)
+#     computer_score += 1
+#   end
+# end
 
 def display_score(user_score, computer_score)
   puts "User: #{user_score} vs Computer: #{computer_score}"
 end
 
+  if user_score == 5 || computer_score == 5
+   game_play = false 
+  end 
+
+def display_winner(user_score, computer_score)
+  puts user_score == 5 ? 'You win the match!' : 'Computer wins the match!'
+end
 
 prompt('Welcome to Rock-Paper-Spock-Lizard-Scissors!')
 game_play = true
@@ -72,7 +81,6 @@ loop do
            'sc' for scissor:")
 
     choice = ''
-   
     loop do
       choice = gets.chomp
       choice = valid_choice(choice)
@@ -81,22 +89,19 @@ loop do
 
     computer_choice = VALID_CHOICES.sample
     prompt("You picked #{choice} and Computer picked #{computer_choice}.")
+    
     display_result(choice, computer_choice)  
-    # increment_score(choice, computer_choice, user_score, computer_score)
-    
-    
-  if win?(choice, computer_choice)
-    user_score += 1
-  elsif win?(computer_choice, choice)
-    computer_score += 1
-  end  
-    
-  display_score(user_score, computer_score)
-    if user_score == 5 || computer_score == 5
-      game_play = false 
-    end
+    display_score(user_score, computer_score)
+     
+    if win?(choice, computer_choice)
+      user_score += 1
+    elsif win?(computer_choice, choice)
+      computer_score += 1
+    end  
+      
+    finish_game?(user_score, computer_score) 
   end
-
+  
   prompt('Would you like to play again?')
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
