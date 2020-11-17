@@ -1,7 +1,14 @@
 # A full-redo of the exercise:
 
-
 VALID_CHOICES = %w(rock paper scissors)
+
+WINNING_COMBOS = {
+  'rock' => ['scissors', 'lizard'],
+  'paper' => ['rock', 'spock'],
+  'scissors' => ['paper', 'lizard'],
+  'lizard' => ['spock', 'paper'],
+  'spock' => ['rock', 'scissors']
+}
 
 def prompt(msg)
   puts ">> #{msg}"
