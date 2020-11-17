@@ -2,6 +2,14 @@
 
 VALID_CHOICES = %w(rock paper scissors lizard spock)
 
+USER_CHOICES = {
+  'sp' => 'spock',
+  'sc' => 'scissors',
+  'l' => 'lizard',
+  'p' => 'paper',
+  'r' => 'rock'
+}
+
 WINNING_COMBOS = {
   'rock' => ['scissors', 'lizard'],
   'paper' => ['rock', 'spock'],
@@ -65,20 +73,20 @@ end
 prompt('Welcome!')
 
 loop do
-  prompt('Please pick rock, paper, scissors, spock, or lizard:')
+  prompt('Please pick (r) for rock, (p) for paper, (sc) for scissors, (sp) for spock, or (l) for lizard:')
 
   choice = ''
   loop do
-    choice = gets.chomp
+    input = gets.chomp
+    choice = USER_CHOICES[input]
     break if VALID_CHOICES.include?(choice)
     prompt('Invalid response.')
   end 
 
   computer_choice = VALID_CHOICES.sample
   prompt("You picked #{choice} and Computer picked #{computer_choice}.")
-
   display_result(choice, computer_choice)
- 
+  
   increment_score(choice, computer_choice) 
   display_score
   
