@@ -1,6 +1,6 @@
 # A full-redo of the exercise:
 
-VALID_CHOICES = %w(rock paper scissors)
+VALID_CHOICES = %w(rock paper scissors lizard spock)
 
 WINNING_COMBOS = {
   'rock' => ['scissors', 'lizard'],
@@ -16,9 +16,7 @@ end
 
 
 def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+  WINNING_COMBOS[first].include?(second) 
 end
 
 def display_result(choice, computer_choice)
@@ -32,13 +30,13 @@ def display_result(choice, computer_choice)
 end
 
 loop do
-  prompt("Please pick rock, paper, or scissors:")
+  prompt('Please pick rock, paper, scissors, spock, or lizard:')
 
   choice = ''
   loop do
     choice = gets.chomp
     break if VALID_CHOICES.include?(choice)
-    prompt('Invalid response. Please choose rock, paper, or scissors.')
+    prompt('Invalid response.')
   end 
 
   computer_choice = VALID_CHOICES.sample
