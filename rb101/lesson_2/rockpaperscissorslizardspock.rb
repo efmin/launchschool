@@ -34,6 +34,15 @@ def win?(first, second)
     (second == 'rock' || second == 'scissors'))
 end
 
+def find_winner(choice, computer_choice)
+  winner = nil
+  if win?(choice, computer_choice)  
+    winner = choice
+  elsif win?(computer_choice, choice)
+    winner = computer_choice
+  end
+end
+
 def display_result(choice, computer_choice)
   if win?(choice, computer_choice)  
     prompt('You won!')
@@ -44,13 +53,8 @@ def display_result(choice, computer_choice)
   end
 end
 
-def increment_score(choice, computer_choice, user_score, computer_score)
-  if win?(choice, computer_choice)
-    user_score += 1
-  elsif win?(computer_choice, choice)
-    computer_score += 1
-  end
-  puts "The Score inside method: User: #{user_score} vs Computer: #{computer_score}"
+def increment_score(score)
+  score += 1
 end
 
 def display_score(user_score, computer_score)
@@ -91,16 +95,11 @@ loop do
     computer_choice = VALID_CHOICES.sample
     prompt("You picked #{choice} and Computer picked #{computer_choice}.")
     
-    display_result(choice, computer_choice)  
-    increment_score(choice, computer_choice, user_score, computer_score)
-    display_score(user_score, computer_score)
+    # display_result(choice, computer_choice)  
+    winner = find_winner(choice, computer_choice)
+
+    # display_score(user_score, computer_score)
      
-    # if win?(choice, computer_choice)
-    #   user_score += 1
-    # elsif win?(computer_choice, choice)
-    #   computer_score += 1
-    # end  
-      
     # finish_game?(user_score, computer_score) 
   end
   
