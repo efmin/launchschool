@@ -43,6 +43,10 @@ def increment_score(choice, computer_choice)
   end
 end
 
+def win_state?
+  SCORES.values.include?(5)
+end
+
 
 
 prompt('Welcome!')
@@ -65,9 +69,12 @@ prompt('Welcome!')
    
     increment_score(choice, computer_choice) 
     puts "The score is now: \nUser - #{SCORES['user_score']} \nComputer - #{SCORES['computer_score']}!"
-
-    prompt('Would you like to play again?')
-    answer = gets.chomp
-    break unless answer.downcase.start_with?('y')
+    
+    break if win_state?
   end
-# end
+
+  puts "Good bye"
+    # prompt('Would you like to play again?')
+    # answer = gets.chomp
+    # break unless answer.downcase.start_with?('y')
+  # end
