@@ -43,6 +43,10 @@ def increment_score(choice, computer_choice)
   end
 end
 
+def display_score
+  puts "********************\nThe score is now: \nUser - #{SCORES['user_score']} \nComputer - #{SCORES['computer_score']}\n********************"
+end
+
 def win_state?
   SCORES.values.include?(5)
 end
@@ -76,7 +80,7 @@ loop do
   display_result(choice, computer_choice)
  
   increment_score(choice, computer_choice) 
-  puts "The score is now: \nUser - #{SCORES['user_score']} \nComputer - #{SCORES['computer_score']}!"
+  display_score
   
   if win_state? 
     display_winner  
