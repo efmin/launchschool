@@ -50,7 +50,14 @@ def increment_score(choice, computer_choice)
 end
 
 def display_score
-  puts "********************\nThe score is now: \nUser - #{SCORES['user_score']} \nComputer - #{SCORES['computer_score']}\n********************"
+  display = <<~HEREDOC
+  ********************
+  The score is now:
+  User - #{SCORES['user_score']}
+  Computer - #{SCORES['computer_score']}
+  ********************
+HEREDOC
+  puts display
 end
 
 def win_state?
@@ -58,12 +65,13 @@ def win_state?
 end
 
 def display_winner
-  user_win = "Congrats! You win #{SCORES['user_score']} to #{SCORES['computer_score']}."
-  computer_win = "Too bad! Computer wins #{SCORES['computer_score']} to #{SCORES['user_score']}."
-  
-  if SCORES['user_score'] == 5 
+  user_win = "Congrats! You beat Computer #{SCORES['user_score']} 
+              to #{SCORES['computer_score']}."
+  computer_win = "Too bad! Computer beat you #{SCORES['computer_score']}
+                 to #{SCORES['user_score']}."
+  if SCORES['user_score'] == 5
     prompt(user_win)
-  elsif SCORES['computer_score'] == 5 
+  elsif SCORES['computer_score'] == 5
     prompt(computer_win)
   end
 end
