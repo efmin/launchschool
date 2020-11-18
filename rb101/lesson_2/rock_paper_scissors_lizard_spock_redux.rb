@@ -23,18 +23,16 @@ SCORES = {
   'computer_score' => 0
 }
 
-
-
 def prompt(msg)
   puts ">> #{msg}"
 end
 
 def win?(first, second)
-  WINNING_COMBOS[first].include?(second) 
+  WINNING_COMBOS[first].include?(second)
 end
 
 def display_result(choice, computer_choice)
-  if win?(choice, computer_choice)  
+  if win?(choice, computer_choice)
     prompt('You won!')
   elsif win?(computer_choice, choice)
     prompt('Computer won!')
@@ -44,7 +42,7 @@ def display_result(choice, computer_choice)
 end
 
 def increment_score(choice, computer_choice)
-  if win?(choice, computer_choice)  
+  if win?(choice, computer_choice)
     SCORES['user_score'] += 1
   elsif win?(computer_choice, choice)
     SCORES['computer_score'] += 1
@@ -60,8 +58,8 @@ def win_state?
 end
 
 def display_winner
-  user_win = "Congrats! You beat Computer #{SCORES['user_score']} to #{SCORES['computer_score']}."
-  computer_win = "Too bad! Computer beats you #{SCORES['computer_score']} to #{SCORES['user_score']}."
+  user_win = "Congrats! You win #{SCORES['user_score']} to #{SCORES['computer_score']}."
+  computer_win = "Too bad! Computer wins #{SCORES['computer_score']} to #{SCORES['user_score']}."
   
   if SCORES['user_score'] == 5 
     prompt(user_win)
@@ -73,7 +71,16 @@ end
 prompt('Welcome!')
 
 loop do
-  prompt('Please pick (r) for rock, (p) for paper, (sc) for scissors, (sp) for spock, or (l) for lizard:')
+  instructions = <<~HEREDOC
+  Please pick: 
+  (r) for rock 
+  (p) for paper
+  (sc) for scissors
+  (sp) for spock
+  (l) for lizard
+HEREDOC
+
+  prompt(instructions)
 
   choice = ''
   loop do
@@ -87,11 +94,11 @@ loop do
   prompt("You picked #{choice} and Computer picked #{computer_choice}.")
   display_result(choice, computer_choice)
   
-  increment_score(choice, computer_choice) 
+  increment_score(choice, computer_choice)
   display_score
   
-  if win_state? 
-    display_winner  
+  if win_state?
+    display_winner
     break
   end
 end
